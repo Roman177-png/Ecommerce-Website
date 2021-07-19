@@ -17,29 +17,29 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>
-                            <a href="http://internet-shop.tmweb.ru/mobiles/htc_one_s">
-                                <img height="56px" src="http://internet-shop.tmweb.ru/storage/products/htc_one_s.png">
-                                HTC One S
-                            </a>
-                        </td>
-                        <td><span class="badge">1</span>
-                            <div class="btn-group form-inline">
-                                <form action="http://internet-shop.tmweb.ru/basket/remove/3" method="POST">
-                                    <button type="submit" class="btn btn-danger" href=""><span
-                                                class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
-                                    <input type="hidden" name="_token" value="UtGKi6VhaMwcTnpZ8SFw2FZAACZ7POHoQ5CGijvi">                            </form>
-                                <form action="http://internet-shop.tmweb.ru/basket/add/3" method="POST">
-                                    <button type="submit" class="btn btn-success"
-                                            href=""><span
-                                                class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-                                    <input type="hidden" name="_token" value="UtGKi6VhaMwcTnpZ8SFw2FZAACZ7POHoQ5CGijvi">                            </form>
-                            </div>
-                        </td>
-                        <td>12490 ₽</td>
-                        <td>12490 ₽</td>
-                    </tr>
+                    @foreach($order->products as $product)
+                        <tr>
+                            <td>
+                                <a href="{{route('product'),[$product->category->code, $product->code]}}">
+                                    <img height="56px" src="http://internet-shop.tmweb.ru/storage/products/htc_one_s.png">
+                                    {{ $product->name }}
+                                </a>
+                            </td>
+                            <td><span class="badge">1</span>
+                                <form class="btn-group">
+                                    <a type="button" class="btn btn-danger" href="http://internet-shop.tmweb.ru/basket/remove/3"><span
+                                        class="glyphicon glyphicon-minus" aria-hiden="true"></span></a>
+                                    <form action="{{route('basket-add', $product)}} " method="POST">
+                                        <button type="submit" class="btn btn-success" href= "" ><span
+                                                    class="glyphicon glyphicon-plus" aria-hiden="true"></span></button>
+                                        @csrf
+                                    </form>
+                                </div>
+                            </td>
+                            <td>{{ $product->price }}</td>
+                            <td>{{ $product->price }}</td>
+                        </tr>
+                    @endforeach
                     <tr>
                         <td colspan="3">Общая стоимость:</td>
                         <td>12490 ₽</td>

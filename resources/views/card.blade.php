@@ -9,14 +9,14 @@
             <h3>{{$product -> name }}</h3>
             <p>{{$product ->price }}</p>
             <p>
-            <a href="{{route('basket')}}" class="btn btn-primary" role="button">In Basket</a>
-                {{--{{$product->category->name}}--}}
-                <a href="{{route('product',[$product->category->code, $product->code])}}"
-                   class="btn btn-default"
-                   role="button">Подробнее</a>
-               {{-- <a href="{{route('basket',[$product->category->code, $product->code])}}"
-                   class="btn btn-default"
-                   role="button">Подробнее</a>--}}
+                <form action="{{route('basket-add', $product)}}" method="post">
+                    <button type="submit"  class="btn btn-primary" role="button">In Basket</button>
+                    {{--{{$product->category->name}}--}}
+                    <a href="{{route('product',[$product->category->code, $product->code])}}"
+                       class="btn btn-default"
+                       role="button">Подробнее</a>
+                    @csrf
+                </form>
             </p>
         </div>
     </div>
