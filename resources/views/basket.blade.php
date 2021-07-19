@@ -1,8 +1,6 @@
-@extends('master')
+@extends('layouts.master')
 @section('title', 'Baskets')
 @section('content')
-    <div class="container">
-        <div class="starter-template">
             <p class="alert alert-success">Добавлен товар HTC One S</p>
             <h1>Корзина</h1>
             <p>Оформление заказа</p>
@@ -26,7 +24,7 @@
                                 </a>
                             </td>
                             <td><span class="badge">{{$product->pivot->count}}</span>
-                                <div class="btn-group">
+                                <div class="btn-group form-inline" >
                                     <form action="{{route('basket-remove', $product)}} " method="POST">
                                         <button type="submit" class="btn btn-danger" href= "" ><span
                                                     class="glyphicon glyphicon-minus" aria-hiden="true"></span></button>
@@ -51,8 +49,6 @@
                 </table>
                 <br>
                 <div class="btn-group pull-right" role="group">
-                    <a type="button" class="btn btn-success" href="http://internet-shop.tmweb.ru/basket/place">Оформить заказ</a>
+                    <a type="button" class="btn btn-success" href="{{route('basket-place')}}">Оформить заказ</a>
                 </div>
-            </div>
-        </div>
 @endsection

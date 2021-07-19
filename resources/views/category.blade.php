@@ -1,7 +1,6 @@
-@extends('master')
+@extends('layouts.master')
 @section('title', 'Category' . $category->name)
 @section('content')
-    <div class="starter-template">
         <h1>
             {{$category->name}} {{$category->products->count()}}
         </h1>
@@ -10,8 +9,7 @@
         </p>
         <div class="row">
             @foreach($category->products as $product )
-                @include('card', compact('product'))
+                @include('layouts.card', compact('product'))
             @endforeach
         </div>
-    </div>
 @endsection
