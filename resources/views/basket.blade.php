@@ -25,10 +25,13 @@
                                     {{ $product->name }}
                                 </a>
                             </td>
-                            <td><span class="badge">1</span>
-                                <form class="btn-group">
-                                    <a type="button" class="btn btn-danger" href="http://internet-shop.tmweb.ru/basket/remove/3"><span
-                                        class="glyphicon glyphicon-minus" aria-hiden="true"></span></a>
+                            <td><span class="badge">{{$product->pivot->count}}</span>
+                                <div class="btn-group">
+                                    <form action="{{route('basket-remove', $product)}} " method="POST">
+                                        <button type="submit" class="btn btn-danger" href= "" ><span
+                                                    class="glyphicon glyphicon-minus" aria-hiden="true"></span></button>
+                                        @csrf
+                                    </form>
                                     <form action="{{route('basket-add', $product)}} " method="POST">
                                         <button type="submit" class="btn btn-success" href= "" ><span
                                                     class="glyphicon glyphicon-plus" aria-hiden="true"></span></button>
@@ -37,12 +40,12 @@
                                 </div>
                             </td>
                             <td>{{ $product->price }}</td>
-                            <td>{{ $product->price }}</td>
+                            <td>{{ $product->getPriceForCount()}}</td>
                         </tr>
                     @endforeach
                     <tr>
                         <td colspan="3">Общая стоимость:</td>
-                        <td>12490 ₽</td>
+                        <td>{{$order->getFullPrice()}} ₽</td>
                     </tr>
                     </tbody>
                 </table>
