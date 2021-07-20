@@ -25,3 +25,12 @@ Route::get('/categories','MainController@categories')->name('categories');
 Route::get('/{category}','MainController@category')->name('category');
 Route::get('/{category}/{product?}','MainController@product')->name('product');
 
+
+Auth::routes([
+    'reset' => false,
+    'confirm' => false,
+    'verify' => false,
+]);
+
+
+Route::get('/home', 'HomeController@index')->name('home');

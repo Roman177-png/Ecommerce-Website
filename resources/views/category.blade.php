@@ -1,3 +1,4 @@
+{{--
 @extends('layouts.master')
 @section('title', 'Category' . $category->name)
 @section('content')
@@ -13,3 +14,4 @@
             @endforeach
         </div>
 @endsection
+--}}
