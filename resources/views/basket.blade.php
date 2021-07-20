@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('title', 'Baskets')
 @section('content')
-            <p class="alert alert-success">Добавлен товар HTC One S</p>
             <h1>Корзина</h1>
             <p>Оформление заказа</p>
             <div class="panel">
@@ -18,7 +17,7 @@
                     @foreach($order->products as $product)
                         <tr>
                             <td>
-                                <a href="{{route('product'),[$product->category->code, $product->code]}}">
+                                <a href="{{route(('product'),[$product->category->code, $product->code])}}">
                                     <img height="56px" src="http://internet-shop.tmweb.ru/storage/products/htc_one_s.png">
                                     {{ $product->name }}
                                 </a>
@@ -42,13 +41,13 @@
                         </tr>
                     @endforeach
                     <tr>
-                        <td colspan="3">Общая стоимость:</td>
+                        <td colspan="3">All sum:</td>
                         <td>{{$order->getFullPrice()}} ₽</td>
                     </tr>
                     </tbody>
                 </table>
                 <br>
                 <div class="btn-group pull-right" role="group">
-                    <a type="button" class="btn btn-success" href="{{route('basket-place')}}">Оформить заказ</a>
+                    <a type="button" class="btn btn-success" href="{{route('basket-confirm')}}">Оформить заказ</a>
                 </div>
 @endsection

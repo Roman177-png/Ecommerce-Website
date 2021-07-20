@@ -71,11 +71,13 @@ class BasketController extends Controller
         }
         if($order->products->contains($productId))
         {
-            $pivotRow = $order->products()->where('product_id', $product->id/*$productId*/)->first()->pivot;
+            //dd($productId);
+            //$pivotRow = $order->products()->where('product_id', $product->id/*$productId*/)->first()->pivot;
+            $pivotRow = $order->products()->where('product_id', $productId)->first()->pivot;
             $pivotRow->count++;
             $pivotRow->update();
         }else{
-            $order->products()->attach($product->id/*$productId*/);
+            $order->products()->attach(/*$product->id*/$productId);
 
         }
 
@@ -103,14 +105,14 @@ class BasketController extends Controller
 
         dump($order->products->contains($productId));
 
-        if($order->products->contains($product->id/*$productId*/))
+        if($order->products->contains(/*$product->id*/$productId))
         {
-            $pivotRow = $order->products()->where('product_id', $product->id /*$productId*/)->first()->pivot;
+            $pivotRow = $order->products()->where('product_id', /*$product->id*/ $productId)->first()->pivot;
             if($pivotRow->count <2)
             {/*
                 $order->products()->detach($productId);*/
 
-                $order->products()->detach($product->id);
+                $order->products()->detach($productId/*$product->id*/);
             }else{
                 $pivotRow->count--;
                 $pivotRow->update();
