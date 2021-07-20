@@ -21,6 +21,7 @@ class Product extends Model
         {
             return $this->pivot->count * $this->price;
         }
+        dd($this->price);
         return $this->price;
     }
 

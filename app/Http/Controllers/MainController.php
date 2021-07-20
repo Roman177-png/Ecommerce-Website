@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
+use Monolog\Handler\AmqpHandler;
 
 class MainController extends Controller
 {
@@ -32,4 +33,5 @@ class MainController extends Controller
     {
         return view('product', ['product' => $product]);
     }
+
 }

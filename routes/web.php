@@ -25,4 +25,3 @@ Route::post('/basket/place', 'BasketController@basketConfirm')->name('basket-con
 Route::get('/{category}','MainController@category')->name('category');
 Route::get('/{category}/{product?}','MainController@product')->name('product');
 
-

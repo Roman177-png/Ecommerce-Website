@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Интернет Магазин: @yield('title')</title>
+    <title> @yield('title')</title>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     <script src="/js/jquery.min.js"></script>
@@ -22,11 +22,11 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{route('index')}}">Все товары</a></li>
-                <li ><a href="{{route('categories')}}">Категории</a>
+                <li class="active"><a href="{{route('index')}}">All item</a></li>
+                <li ><a href="{{route('categories')}}">Category</a>
                 </li>
-                <li ><a href="{{route('basket')}}">В корзину</a></li>
-                <li><a href="{{route('index')}}">Сбросить проект в начальное состояние</a></li>
+                <li ><a href="{{route('basket')}}">In basket</a></li>{{--
+                <li><a href="{{route('index')}}">Сбросить проект в начальное состояние</a></li>--}}
             </ul>
 
             {{--<ul class="nav navbar-nav navbar-right">--}}
