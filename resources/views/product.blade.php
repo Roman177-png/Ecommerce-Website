@@ -11,5 +11,6 @@
         <form action="http://internet-shop.tmweb.ru/basket/add/1" method="POST">
             <button type="submit" class="btn btn-success" role="button">Add in basket</button>
 
-            <input type="hidden" name="_token" value="UtGKi6VhaMwcTnpZ8SFw2FZAACZ7POHoQ5CGijvi">        </form>
+            @csrf
+        </form>
 @endsection
