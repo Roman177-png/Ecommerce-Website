@@ -11,6 +11,7 @@ class MainController extends Controller
 {
     public function index()
     {
+
         $products = Product::get();
         return view('index',compact('products'));
 
@@ -33,5 +34,4 @@ class MainController extends Controller
     {
         return view('product', ['product' => $product]);
     }
-
 }

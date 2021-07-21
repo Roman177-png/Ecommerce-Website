@@ -29,10 +29,15 @@
                 <li><a href="{{route('index')}}">Сбросить проект в начальное состояние</a></li>--}}
             </ul>
 
-            {{--<ul class="nav navbar-nav navbar-right">--}}
-                {{--<li><a href="http://internet-shop.tmweb.ru/login">Войти</a></li>--}}
-
-            {{--</ul>--}}
+            <ul class="nav navbar-nav navbar-right">
+                @guest
+                    <li><a href="{{route('login')}}">Admin panel</a></li>
+                @endguest
+                @auth
+                        <li><a href="{{route('home')}}">Admin panel</a></li>
+                    <li><a href="{{route('get-logout')}}">Вийти</a></li>
+                @endauth
+            </ul>
         </div>
     </div>
 </nav>

@@ -12,6 +12,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes([
+    'reset' => false,
+    'confirm' => false,
+    'verify' => false,
+]);
+
+Route::get('/logout','Auth\LoginController@logout')->name('get-logout');
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/','MainController@index')->name('index');
 
 
@@ -26,11 +35,7 @@ Route::get('/{category}','MainController@category')->name('category');
 Route::get('/{category}/{product?}','MainController@product')->name('product');
 
 
-Auth::routes([
-    'reset' => false,
-    'confirm' => false,
-    'verify' => false,
-]);
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+

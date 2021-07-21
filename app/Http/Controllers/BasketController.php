@@ -18,7 +18,6 @@ class BasketController extends Controller
             $order = Order::findOrFail($orderId);
 
         }
-
         return view ('basket', compact('order'));
     }
     public function basketConfirm(Request $request )

@@ -1,16 +1,16 @@
 @extends('layouts.master')
 @section('title', 'Baskets')
 @section('content')
-            <h1>Корзина</h1>
-            <p>Оформление заказа</p>
+            <h1>Basktet</h1>
+            <p>Make order</p>
             <div class="panel">
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Название</th>
-                        <th>Кол-во</th>
-                        <th>Цена</th>
-                        <th>Стоимость</th>
+                        <th>Name</th>
+                        <th>Count</th>
+                        <th>Price</th>
+                        <th>Prices</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -48,6 +48,6 @@
                 </table>
                 <br>
                 <div class="btn-group pull-right" role="group">
-                    <a type="button" class="btn btn-success" href="{{route('basket-confirm')}}">Оформить заказ</a>
+                    <a type="button" class="btn btn-success" href="{{route('basket-confirm')}}">Make order</a>
                 </div>
 @endsection
