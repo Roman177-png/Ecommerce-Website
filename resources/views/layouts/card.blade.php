@@ -15,7 +15,7 @@
                     {{--{{$product->category->name}}--}}
                     <a href="{{route('product',[$product->category->code, $product->code])}}"
                        class="btn btn-default"
-                       role="button">Подробнее</a>
+                       role="button">Details</a>
                     @csrf
                 </form>
             </p>

@@ -7,7 +7,7 @@
                 <p>All sum <b>{{$order->getFullPrice()}} ₽.</b></p>
                 <form action="{{route('basket-confirm')}}" method="POST">
                     <div>
-                        <p>Input youe name and phone</p>
+                        <p>Input your name and phone</p>
 
                         <div class="container">
                             <div class="form-group">
@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <br>
-                        <input type="hidden" name="_token" value="UtGKi6VhaMwcTnpZ8SFw2FZAACZ7POHoQ5CGijvi">
+                        @csrf
                         <input type="submit" class="btn btn-success" value="Confirm order">
                         @csrf
                     </div>

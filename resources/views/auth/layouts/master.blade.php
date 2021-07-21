@@ -31,9 +31,6 @@
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="{{route('categories.index')}}">Category</a></li>
-                    <li><a href="http://laravel-diplom-1.rdavydov.ru/admin/products">Item</a>
-                    </li>
-                    <li><a href="http://laravel-diplom-1.rdavydov.ru/admin/orders">Orders</a></li>
                 </ul>
 
                 @guest

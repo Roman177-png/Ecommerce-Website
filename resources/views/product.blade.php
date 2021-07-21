@@ -7,10 +7,4 @@
         <p>Price: <b>71990 </b></p>
         <img src="http://internet-shop.tmweb.ru/storage/products/iphone_x.jpg">
         <p>Nice phone </p>
-
-        <form action="http://internet-shop.tmweb.ru/basket/add/1" method="POST">
-            <button type="submit" class="btn btn-success" role="button">Add in basket</button>
-
-            @csrf
-        </form>
 @endsection
