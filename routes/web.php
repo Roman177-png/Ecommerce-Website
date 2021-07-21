@@ -21,13 +21,15 @@ Route::get('/logout','Auth\LoginController@logout')->name('get-logout');
 
 Route::group([
     'middleware' =>'auth',
-    'namespace' => 'Admin'
+    'namespace' => 'Admin',
+    'prefix' => 'admin'
     ],function(){
     Route::group([
         'middleware' =>'is_admin'
     ],function(){
         Route::get('/orders', 'OrderController@index')->name('home');
     });
+    Route::resource('categories','CategoryController');
 
 });
 
