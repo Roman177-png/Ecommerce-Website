@@ -17,9 +17,16 @@ Auth::routes([
     'confirm' => false,
     'verify' => false,
 ]);
-
 Route::get('/logout','Auth\LoginController@logout')->name('get-logout');
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group([
+    'middleware' =>'auth',
+    'namespace' => 'Admin'
+    ],function(){
+    Route::get('/orders', 'OrderController@index')->name('home');
+});
+
+
 
 Route::get('/','MainController@index')->name('index');
 
