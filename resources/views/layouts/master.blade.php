@@ -22,10 +22,10 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{route('index')}}">All item</a></li>
-                <li ><a href="{{route('categories')}}">Category</a>
+                <li @if(Route::currentRouteNamed('index'))class="active"@endif><a href="{{route('index')}}">All item</a></li>
+                <li @if(Route::currentRouteNamed('categor*'))class="active"@endif ><a href="{{route('categories')}}">Category</a>
                 </li>
-                <li ><a href="{{route('basket')}}">In basket</a></li>{{--
+                <li @if(Route::currentRouteNamed('basket'))class="active"@endif ><a href="{{route('basket')}}">In basket</a></li>{{--
                 <li><a href="{{route('index')}}">Сбросить проект в начальное состояние</a></li>--}}
             </ul>
 
