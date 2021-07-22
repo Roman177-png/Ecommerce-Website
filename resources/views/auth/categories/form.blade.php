@@ -7,8 +7,6 @@
                  @else
                     <h1>Add category </h1>
         @endisset
-
-        <h1>Add category</h1>
         <form method="POST" enctype="multipart/form-data"
             @isset($category)
                 action="{{ route('categories.update',$category) }}"
@@ -24,16 +22,20 @@
                 <div class="input-group row">
                     <label for="code" class="col-sm-2 col-form-label">Code </label>
                     <div class="col-sm-6">
-                        <div class="alert alert-danger"></div>
+                        @error('code')
+                            <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
                         <input type="text" class="form-control" name="code" id="code"
-                               value="@isset($category){{$category->code}}@endisset">
+                               value="{{old('code', isset($category)?$category->code:null)}}{{--@isset($category){{$category->code}}@endisset--}}">
                     </div>
                 </div>
                 <br>
                 <div class="input-group row">
                     <label for="name" class="col-sm-2 col-form-label">Name </label>
                     <div class="col-sm-6">
-                        <div class="alert alert-danger"></div>
+                        @error('name')
+                            <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
                         <input type="text" class="form-control" name="name" id="name"
                                value="@isset($category){{$category->name}}@endisset">
                     </div>
@@ -44,7 +46,9 @@
                 <div class="input-group row">
                     <label for="description" class="col-sm-2 col-form-label">Description: </label>
                     <div class="col-sm-6">
-                        <div class="alert alert-danger"></div>
+                        @error('description')
+                            <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
                         <textarea name="description" id="description" cols="72"
                                   rows="7">@isset($category){{$category->description}}@endisset</textarea>
                     </div>
