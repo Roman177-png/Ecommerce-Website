@@ -17,6 +17,9 @@ Auth::routes([
     'confirm' => false,
     'verify' => false,
 ]);
+
+Route::get('\reset', 'ResetController@reset')->name('reset_db');
+
 Route::get('/logout','Auth\LoginController@logout')->name('get-logout');
 
 Route::middleware(['auth'])->group(function(){

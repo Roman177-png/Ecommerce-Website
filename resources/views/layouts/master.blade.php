@@ -25,7 +25,9 @@
                 <li @routeactive('index')><a href="{{route('index')}}">All item</a></li>
                 <li @routeactive('categor*')><a href="{{route('categories')}}">Category</a>
                 </li>
-                <li @routeactive('basket*') ><a href="{{route('basket')}}">In basket</a></li>{{--
+                <li @routeactive('basket*') ><a href="{{route('basket')}}">In basket</a></li>
+                <li @routeactive('basket*') ><a href="{{route('reset_db')}}">Reset to initial state</a></li>
+{{--
                 <li><a href="{{route('index')}}">Сбросить проект в начальное состояние</a></li>--}}
             </ul>
 
