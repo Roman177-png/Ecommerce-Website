@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Storage;
 
 class ResetController extends Controller
 {
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
     public function reset()
     {
        Artisan::call('  migrate:fresh --seed');

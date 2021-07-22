@@ -15,7 +15,7 @@ class CategoriesTableSeeder extends Seeder
         DB::table('categories')->insert([
             ['name' => 'Mobile phone', 'code' => 'Mobiles', 'description' => 'Description mobile phone','image' => 'categories/mobile.jpg'],
             ['name' => 'Portable technology', 'code' => 'portable', 'description' => 'Description portable technology','image' => 'categories/portable.jpg'],
-            ['name' => 'Appliances technology', 'code' => 'technics', 'description' => 'Description for Appliances technology', 'image' => 'categories/appliances.jpg']
+            ['name' => 'Appliances technology', 'code' => 'technics', 'description' => 'Description for Appliances technology', 'image' => 'categories/appliance.jpg']
         ]);
     }
 }
