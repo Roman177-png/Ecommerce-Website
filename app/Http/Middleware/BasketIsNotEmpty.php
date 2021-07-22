@@ -20,12 +20,15 @@ class BasketIsNotEmpty
         if(!is_null($orderId))
         {
             $order = Order::findOrfail($orderId);
-            if($order->products->count() == 0){
-                session()->flash('warning', 'Basket is empty');
-                return redirect()->route('index');
+            if($order->products->count() > 0){
+/*                session()->flash('warning', 'Basket is empty');
+                return redirect()->route('index');*/
+                return $next($request);
             }
         }
+        session()->flash('warning', 'Basket is empty');
+        return redirect()->route('index');
+        /*return $next($request);*/
 
-        return $next($request);
     }
 }

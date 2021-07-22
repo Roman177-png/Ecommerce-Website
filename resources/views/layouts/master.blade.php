@@ -22,20 +22,31 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li @if(Route::currentRouteNamed('index'))class="active"@endif><a href="{{route('index')}}">All item</a></li>
-                <li @if(Route::currentRouteNamed('categor*'))class="active"@endif ><a href="{{route('categories')}}">Category</a>
+                <li @routeactive('index')><a href="{{route('index')}}">All item</a></li>
+                <li @routeactive('categor*')><a href="{{route('categories')}}">Category</a>
                 </li>
-                <li @if(Route::currentRouteNamed('basket'))class="active"@endif ><a href="{{route('basket')}}">In basket</a></li>{{--
+                <li @routeactive('basket*') ><a href="{{route('basket')}}">In basket</a></li>{{--
                 <li><a href="{{route('index')}}">Сбросить проект в начальное состояние</a></li>--}}
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 @guest
-                    <li><a href="{{route('login')}}">Admin panel</a></li>
+                    <li><a href="{{route('login')}}">Login</a></li>
                 @endguest
+
                 @auth
+                    @admin
                         <li><a href="{{route('home')}}">Admin panel</a></li>
-                    <li><a href="{{route('get-logout')}}">Logout</a></li>
+                    @else
+                        <li><a href="{{route('person.orders.index')}}">My orders</a></li>
+                    @endadmin
+                        <li><a href="{{route('get-logout')}}">Logout</a></li>
+{{--                     @if(Auth::user()->isAdmin())
+                            <li><a href="{{route('home')}}">Admin panel</a></li>
+                        @else
+                            <li><a href="{{route('person.orders.index')}}">My orders</a></li>
+                      @endif
+                                           <li><a href="{{route('get-logout')}}">Logout</a></li>--}}
                 @endauth
             </ul>
         </div>

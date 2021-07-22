@@ -36,7 +36,14 @@
                     <td>
                         <div class="btn-group" role="group">
                             <a class="btn btn-success" type="button"
-                               href="http://laravel-diplom-1.rdavydov.ru/admin/orders/1">Open</a>
+                               @admin
+                              {{-- @if(Auth::user()->isAdmin())--}}
+                                 href="{{route('orders.show', $order)}}"
+                               @else
+                                href="{{route('person.orders.show', $order)}}"
+                                    @endadmin
+
+                            >Open</a>
                         </div>
                     </td>
                 </tr>
