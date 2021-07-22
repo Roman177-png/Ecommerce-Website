@@ -33,7 +33,7 @@
             </tr>
             <tr>
                 <td>image</td>
-                <td><img src=""
+                <td><img src="{{Storage::url($category->image)}}"
                          height="240px"></td>
             </tr>
             <tr>
