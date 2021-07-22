@@ -22,9 +22,12 @@
                 <div class="input-group row">
                     <label for="code" class="col-sm-2 col-form-label">Code </label>
                     <div class="col-sm-6">
+                        @include('auth.layouts.error',['fieldName' => 'code'])
+                        {{--
                         @error('code')
                             <div class="alert alert-danger">{{$message}}</div>
                         @enderror
+--}}
                         <input type="text" class="form-control" name="code" id="code"
                                value="{{--{{old('code', isset($category)?$category->code:null)}}--}}@isset($product){{$product->code}}@endisset">
                     </div>
@@ -33,9 +36,11 @@
                 <div class="input-group row">
                     <label for="name" class="col-sm-2 col-form-label">Name </label>
                     <div class="col-sm-6">
-                        @error('name')
-                            <div class="alert alert-danger">{{$message}}</div>
-                        @enderror
+                        @include('auth.layouts.error',['fieldName' => 'name'])
+
+                        {{--                        @error('name')
+                                                    <div class="alert alert-danger">{{$message}}</div>
+                                                @enderror--}}
                         <input type="text" class="form-control" name="name" id="name"
                                value="{{--{{old('name', isset($category)?$category->name:null)}}--}}@isset($product){{$product->name}}@endisset">
                     </div>
@@ -46,6 +51,7 @@
                 <div class="input-group row">
                     <label for="category_id" class="col-sm-2 col-form-label">Category</label>
                     <div class="col-sm-6">
+                        @include('auth.layouts.error',['fieldName' => 'category_id'])
                         <select name="category_id" id="category_id" class="form-control">
                             @foreach($categories as $category)
                                 @isset($product)
@@ -64,11 +70,18 @@
                 <div class="input-group row">
                     <label for="description" class="col-sm-2 col-form-label">Description: </label>
                     <div class="col-sm-6">
-                        @error('description')
-                            <div class="alert alert-danger">{{$message}}</div>
-                        @enderror
+                        @include('auth.layouts.error',['fieldName' => 'description'])
+                        {{--                        @error('description')
+                                                    <div class="alert alert-danger">{{$message}}</div>
+                                                @enderror--}}
                         <textarea name="description" id="description" cols="72"
                                   rows="7">@isset($product){{$product->description}}@endisset</textarea>
+                        @include('auth.layouts.error',['fieldName' => 'price'])
+{{--                        @error('description')
+                            <div class="alert alert-danger">{{$message}}</div>
+                        @enderror--}}
+
+
                     </div>
                 </div>
                 <br>
@@ -82,6 +95,36 @@
                         </label>
                     </div>
                 </div>
+                    <br>
+                <div class="input-group row">
+                    <label for="price" class="col-sm-2 col-form-label">Price: </label>
+                    <div class="col-sm-6">
+                        @include('auth.layouts.error',['fieldName' => 'price'])
+                        {{--                        @error('description')
+                                                    <div class="alert alert-danger">{{$message}}</div>
+                                                @enderror--}}
+                        <input type="text" class="form-control" name="price" id="price"
+                               value="{{--{{old('name', isset($category)?$category->name:null)}}--}}@isset($product){{$product->price}}@endisset">
+                    </div>
+                </div>
+                <br>
+                    @foreach([
+                    'hit' => 'hits',
+                    'new' => 'news',
+                    'recommend' => 'recommends',
+                    ] as $field=> $title)
+                        <div class="form-group row">
+                            <label for="code" class="col-sm-2 col-form-label">{{$title}} </label>
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="form-control" name="{{$field}}" id="{{$field}}"
+                                    @if(isset($product) && $product->$field === 1)
+                                        checked = "checked"
+                                    @endif
+                                >
+                            </div>
+                        </div>
+                        <br>
+                    @endforeach
                 <button class="btn btn-success">Save</button>
             </div>
         </form>

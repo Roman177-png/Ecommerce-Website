@@ -40,6 +40,20 @@
                 <td>Category</td>
                 <td>{{ $product->category->name }}</td>
             </tr>
+            <tr>
+                <td>Label</td>
+                <td>
+                    @if($product->isNew())
+                        <span class="badge badge-success">New</span>
+                    @endif
+                    @if($product->isRecommend())
+                        <span class="badge badge-warning">Recommend</span>
+                    @endif
+                    @if($product->isHit())
+                        <span class="badge badge-danger">Hit</span>
+                    @endif
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>
