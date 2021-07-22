@@ -42,6 +42,14 @@ class CategoryController extends Controller
     {
         $params = $request->all();
         unset($params['image']);
+        if ($request->has('image')) {
+            $params['image'] = $request->file('image')->store('categories');
+        }
+
+        Category::create($params);
+        return redirect()->route('categories.index');
+/*        $params = $request->all();
+        unset($params['image']);
         if($request->has('image'))
         {
             $path = $request->file('image')->store('categories');
@@ -49,7 +57,7 @@ class CategoryController extends Controller
         }
 
         Category::create($params);
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index');*/
     }
 
     /**
@@ -85,6 +93,15 @@ class CategoryController extends Controller
     {
         $params = $request->all();
         unset($params['image']);
+        if ($request->has('image')) {
+            Storage::delete($category->image);
+            $params['image'] = $request->file('image')->store('categories');
+        }
+
+        $category->update($params);
+        return redirect()->route('categories.index');
+/*        $params = $request->all();
+        unset($params['image']);
         if($request->has('image'))
         {
             Storage::delete($category->image);
@@ -93,7 +110,7 @@ class CategoryController extends Controller
         }
 
         $category->update($params);
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index');*/
     }
 
     /**

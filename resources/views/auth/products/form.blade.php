@@ -3,12 +3,10 @@
 @section('content')
     <div class="col-md-12">
         @isset($product)
-            <h1>Edit category <b>{{$product->name}}</b></h1>
+            <h1>Edit<b>{{$product->name}}</b></h1>
         @else
             <h1>Add category </h1>
         @endisset
-
-        <h1>Add category</h1>
         <form method="POST" enctype="multipart/form-data"
               @isset($product)
               action="{{ route('products.update',$product) }}"
@@ -24,18 +22,22 @@
                 <div class="input-group row">
                     <label for="code" class="col-sm-2 col-form-label">Code </label>
                     <div class="col-sm-6">
-                        <div class="alert alert-danger"></div>
+                        @error('code')
+                            <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
                         <input type="text" class="form-control" name="code" id="code"
-                               value="@isset($product){{$product->code}}@endisset">
+                               value="{{--{{old('code', isset($category)?$category->code:null)}}--}}@isset($product){{$product->code}}@endisset">
                     </div>
                 </div>
                 <br>
                 <div class="input-group row">
                     <label for="name" class="col-sm-2 col-form-label">Name </label>
                     <div class="col-sm-6">
-                        <div class="alert alert-danger"></div>
+                        @error('name')
+                            <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
                         <input type="text" class="form-control" name="name" id="name"
-                               value="@isset($product){{$product->name}}@endisset">
+                               value="{{--{{old('name', isset($category)?$category->name:null)}}--}}@isset($product){{$product->name}}@endisset">
                     </div>
                 </div>
 
@@ -62,7 +64,9 @@
                 <div class="input-group row">
                     <label for="description" class="col-sm-2 col-form-label">Description: </label>
                     <div class="col-sm-6">
-                        <div class="alert alert-danger"></div>
+                        @error('description')
+                            <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
                         <textarea name="description" id="description" cols="72"
                                   rows="7">@isset($product){{$product->description}}@endisset</textarea>
                     </div>
