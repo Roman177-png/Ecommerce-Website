@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+
 use App\Http\Requests\ProductsFilterRequest;
-use App\Product;
+
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use \Debugbar;
@@ -30,7 +32,8 @@ class MainController extends Controller
         {
             if($request->has($field))
             {
-                $productsQuery->where($field,1);
+                /*$productsQuery->hit();*/
+                $productsQuery->/*where($field,1)*/$field();
             }
         }
 

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Order;
-use App\Product;
+
+use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,11 +34,11 @@ class BasketController extends Controller
 
         if($success)
         {
-            session()->flash('success','Your order will be ...');
+            session()->flash('success','Your order will be processed');
         }else{
             session()->flash('warning','Error');
         }
-
+        Order::eraseOrderSum();
 
         return redirect()->route('index');
     }
@@ -91,6 +92,8 @@ class BasketController extends Controller
         $product = Product::find($productId);
         session()->flash('success', 'Add item' . $product->name);
 
+        Order::changeFullSum($product->price);
+
         return redirect()->route('basket');
 
         //return view ('basket', compact('order'));
@@ -127,6 +130,8 @@ class BasketController extends Controller
         }
 
         $product = Product::find($productId);
+        Order::changeFullSum(-$product->price);
+
         session()->flash('warning', 'Delete item' . $product->name);
 
         return redirect()->route('basket');

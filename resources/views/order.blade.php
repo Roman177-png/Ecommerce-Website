@@ -4,7 +4,7 @@
         <h1>Confirm order</h1>
         <div class="container">
             <div class="row justify-content-center">
-                <p>All sum <b>{{$order->getFullPrice()}} ₽.</b></p>
+                <p>All sum <b>{{$order->calculateFullSum()}} ₽.</b></p>
                 <form action="{{route('basket-confirm')}}" method="POST">
                     <div>
                         <p>Input your name and phone</p>
