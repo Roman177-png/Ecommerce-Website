@@ -6,15 +6,20 @@ use App\Category;
 use App\Http\Requests\ProductsFilterRequest;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use \Debugbar;
 use Monolog\Handler\AmqpHandler;
 
 class MainController extends Controller
 {
     public function index(ProductsFilterRequest $request)
     {
-        $productsQuery = Product::query();
+      //  \Debugbar::info('my_info');
+        /*Log::channel('single')->info($request->ip());*/
+        $productsQuery = Product::with('category')/*query()*/;
         if($request->filled('price_from'))
         {
+
             $productsQuery->where('price','>=',$request->price_from);
         }
         if($request->filled('price'))
