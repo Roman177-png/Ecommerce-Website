@@ -76,7 +76,6 @@
                                                 @enderror--}}
                         <textarea name="description" id="description" cols="72"
                                   rows="7">@isset($product){{$product->description}}@endisset</textarea>
-                        @include('auth.layouts.error',['fieldName' => 'price'])
 {{--                        @error('description')
                             <div class="alert alert-danger">{{$message}}</div>
                         @enderror--}}
@@ -108,6 +107,16 @@
                     </div>
                 </div>
                 <br>
+                    <div class="input-group row">
+                        @include('auth.layouts.error',['fieldName' => 'count'])
+                        <label for="count" class="col-sm-2 col-form-label">Count: </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="count" id="count"
+                                   value="{{--{{old('name', isset($category)?$category->name:null)}}--}}@isset($product){{$product->count}}@endisset">
+                        </div>
+                    </div>
+                    <br>
+
                     @foreach([
                     'hit' => 'hits',
                     'new' => 'news',

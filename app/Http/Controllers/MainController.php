@@ -18,7 +18,7 @@ class MainController extends Controller
     {
       //  \Debugbar::info('my_info');
         /*Log::channel('single')->info($request->ip());*/
-        $productsQuery = Product::with('category')/*query()*/;
+        $productsQuery = Product::with('category')->orderBy('name')/*query()*/;
         if($request->filled('price_from'))
         {
 
@@ -56,8 +56,9 @@ class MainController extends Controller
         return view('category', compact('category'));
 
     }
-    public function product($category, $product = null)
+    public function product($category, $productCode)
     {
-        return view('product', ['product' => $product]);
+        $product = Product::withTrashed()->byCode($productCode)->first();
+        return view('product', compact('product') /*['product' => $product]*/);
     }
 }

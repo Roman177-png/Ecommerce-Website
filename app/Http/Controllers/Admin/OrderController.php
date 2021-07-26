@@ -32,8 +32,10 @@ class OrderController extends Controller
     }
     public function show(Order $order)
     {
+        /*$order->load('products');*/
+        $products = $order->products()->withTrashed()->get();
 
 /*        $order = Order::get();*/
-        return view('auth.orders.show',compact('order'));
+        return view('auth.orders.show',compact('order','products'));
     }
 }

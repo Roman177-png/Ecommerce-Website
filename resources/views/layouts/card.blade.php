@@ -19,11 +19,16 @@
             <p>
 
                 <form action="{{route('basket-add', $product)}}" method="POST">
-                    <button type="submit"  class="btn btn-primary" role="button">In Basket</button>
+                    @if($product->isAvailable())<button type="submit"  class="btn btn-primary" role="button">In Basket</button>
                     {{--{{$product->category->name}}--}}
-                    <a href="{{route('product',[isset($category) ? $category->code:$product->category->code, $product->code])}}"
+                    @else
+                        No available
+                    @endif
+                        <a href="{{ route('product', [isset($category) ? $category->code : $product->category->code, $product->code]) }}" class="btn btn-default"
+                           role="button">Details</a>
+{{--                    <a href="{{route('product',[isset($category) ? $category->code:$product->category->code, $product->code])}}"
                        class="btn btn-default"
-                       role="button">Details</a>
+                       role="button">Details</a>--}}
                     @csrf
                 </form>
             </p>
