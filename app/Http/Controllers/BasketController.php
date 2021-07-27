@@ -26,6 +26,8 @@ class BasketController extends Controller
     }
     public function basketConfirm(Request $request )
     {
+        $email = Auth::check() ? Auth::user()->email:$request->email;
+
        // $orderId = session('orderId');
 /*        if(is_null($orderId))
         {
@@ -35,7 +37,7 @@ class BasketController extends Controller
 
        // $success = (new Basket())->saveOrder($request->name, $request->phone );
 
-        if((new Basket())->saveOrder($request->name, $request->phone ))
+        if((new Basket())->saveOrder($request->name, $request->phone, $email ))
         {
             session()->flash('success','Your order will be processed');
         }else{
