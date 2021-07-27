@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductsFilterRequest;
 
+use App\Http\Requests\SubscriptionRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use \Debugbar;
@@ -60,5 +62,13 @@ class MainController extends Controller
     {
         $product = Product::withTrashed()->byCode($productCode)->firstOrFail();
         return view('product', compact('product') /*['product' => $product]*/);
+    }
+    public function subscribe(SubscriptionRequest $request, Product $product)
+    {
+        Subscription::create([
+            'email' => $request->email,
+            'product_id' => $product->id,
+        ]);
+        return redirect()->back()->with('success', 'Thank you, we will inform you if there is a product ');
     }
 }
