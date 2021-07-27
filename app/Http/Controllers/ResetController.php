@@ -14,7 +14,7 @@ class ResetController extends Controller
      */
     public function reset()
     {
-       Artisan::call('  migrate:fresh --seed');
+       \Artisan::call('  migrate:fresh --seed');
 
        foreach (['categories','products'] as $folder)
        {

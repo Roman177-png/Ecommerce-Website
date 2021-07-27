@@ -19,7 +19,8 @@
             <p>
 
                 <form action="{{route('basket-add', $product)}}" method="POST">
-                    @if($product->isAvailable())<button type="submit"  class="btn btn-primary" role="button">In Basket</button>
+                    @if($product->isAvailable())
+                        <button type="submit"  class="btn btn-primary" role="button">In Basket</button>
                     {{--{{$product->category->name}}--}}
                     @else
                         No available
