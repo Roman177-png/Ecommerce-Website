@@ -71,4 +71,5 @@ class MainController extends Controller
         ]);
         return redirect()->back()->with('success', 'Thank you, we will inform you if there is a product ');
     }
+
 }
